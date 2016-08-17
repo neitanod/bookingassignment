@@ -52,8 +52,8 @@
       <div class="brand-logo preload-centered">
         <img src="{{ asset('images/logo-panel-wide.png') }}" alt="App Logo" class="img-responsive">
       </div>
-      <div>Control Panel is </div>
-      <img class="wait-animation" src="{{ asset('/images/loading_white_on_transparent.gif') }}">
+      <div>Loading...</div>
+      <img class="wait-animation" src="{{ asset('images/loading_white_on_transparent.gif') }}">
     </div>
     <div class="wrapper container body">
     @yield('menu')
