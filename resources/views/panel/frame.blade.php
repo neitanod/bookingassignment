@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="{{ asset('/images/S.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
 
     <title id="html-title"></title>
 
@@ -60,6 +60,9 @@
     @yield('body')
     </div>
   </body>
+  <script>
+    top.APP_PATH="{{ URL::to('/') }}";
+  </script>
   <script src="{{ asset('lib/rsvp-3.0.8/rsvp.min.js') }}"></script>
   <script src="{{ asset('lib/basket-0.5.2.patched/basket.js') }}"></script>
   <script>
@@ -71,10 +74,10 @@
       {url: "{{ asset('lib/pnotify/pnotify.custom.min.css') }}"},
       // {url: "{{ asset('lib/alertify.js-0.3.11.patched/themes/alertify.core.css') }}"},
       // {url: "{{ asset('lib/alertify.js-0.3.11.patched/themes/alertify.default.css') }}"},
-      @if(config('app.env') == 'dev')
-        {url: "{{ asset('panel_files/panel.css') }}", skipCache: true}  // no uso cache mientras estoy desarrollando
-      @else
+      @if(!(config('app.env') == 'dev'))
         {url: "{{ asset('panel_files/panel.css') }}"}
+      @else
+        {url: "{{ asset('panel_files/panel.css') }}", skipCache: true}  // no uso cache mientras estoy desarrollando
       @endif
     ];
     basket.preload( stylesheets ).then(function(){
@@ -103,13 +106,13 @@
       {url: "{{ asset('lib/angular-1.5.0/angular.min.js') }}"},
       {url: "{{ asset('lib/angular-1.5.0/angular-route.min.js') }}"},
 
-      @if(config('app.env') == 'dev')
+      @if(!(config('app.env') == 'dev'))
+        {url: "{{ asset('panel_files/Panel.js') }}"},
+        {url: "{{ asset('panel_files/ngControlPanel.js') }}"}
+      @else
         // do not use cache while developing
         {url: "{{ asset('panel_files/Panel.js') }}", skipCache: true},
         {url: "{{ asset('panel_files/ngControlPanel.js') }}", skipCache: true}
-      @else
-        {url: "{{ asset('panel_files/Panel.js') }}"},
-        {url: "{{ asset('panel_files/ngControlPanel.js') }}"}
       @endif
       // ========= /Panel =============
 

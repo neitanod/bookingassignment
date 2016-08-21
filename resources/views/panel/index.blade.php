@@ -7,7 +7,7 @@
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
               <a href="{{ URL::to('/') }}" class="site_title">
-                <img src="{{ URL::to('images/logo-panel.png') }}" style="margin-left: 6px;"/> <span>Control Panel</span></a>
+                <img src="{{ URL::to('images/crossover-for-work-squarelogo.png') }}" style="margin: 1px 6px; height: 32px;"/> <span>Control Panel</span></a>
             </div>
 
             <div class="clearfix"></div>

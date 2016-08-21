@@ -12,11 +12,13 @@
 */
 
 Route::get('/', function () {
+  Log::info("INFO",['logging'=>true]);
+  if(!empty(Auth::user())) Log::warning("WARNING",['user'=>["name"=>Auth::user()->name, "id"=>Auth::user()->id]]);
+    //return Redirect::to('/home');
+    //dd(Auth::user());
     return view('welcome');
 });
 
 Route::auth();
-
 Route::get('/home', 'HomeController@index');
-
 Route::get('/panel', 'ControlPanelController@index');

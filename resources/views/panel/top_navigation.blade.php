@@ -13,8 +13,8 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="{{ URL::to('@user_profile') }}" target="_blank"><i class="fa fa-user pull-right"></i> Mi cuenta</a></li>
-                    <li><a href="{{ URL::to('@user_logout') }}"><i class="fa fa-sign-out pull-right"></i> Cerrar sesión</a></li>
+                    <li><a href="{{ URL::to('@user_profile') }}" target="_blank"><i class="fa fa-user pull-right"></i> My account</a></li>
+                    <li><a href="{{ URL::to('@user_logout') }}"><i class="fa fa-sign-out pull-right"></i>Log out</a></li>
                   </ul>
                 </li>
 
@@ -32,14 +32,14 @@
                           <span class="time">3 mins ago</span>
                         </span>
                         <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                          The messaging system was not implemented in this evaluation assignment, but the layout is prepared for it already...
                         </span>
                       </a>
                     </li>
                     <li>
                       <div class="text-center">
                         <a>
-                          <strong>Ver todas</strong>
+                          <strong>View all</strong>
                           <i class="fa fa-angle-right"></i>
                         </a>
                       </div>

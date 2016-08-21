@@ -1,5 +1,3 @@
-top.use_mock_api = 0;
-
 (function(angular) {
   'use strict';
 
@@ -8,15 +6,15 @@ top.use_mock_api = 0;
 
       $routeProvider.
       when('/dashboard', {
-        templateUrl: '/panel_files/views/dashboard.html',
+        templateUrl: top.APP_PATH+'/panel_files/views/dashboard.html',
         controller: 'DashboardController'
       }).
       when('/users', {
-        templateUrl: '/panel_files/views/users.html',
+        templateUrl: top.APP_PATH+'/panel_files/views/users.html',
         controller: 'UsersController'
       }).
       otherwise({
-        redirectTo: '/dashboard'
+        redirectTo: top.APP_PATH+'/dashboard'
       });
 
       $interpolateProvider.startSymbol('{|').endSymbol('|}');
@@ -154,23 +152,10 @@ function checkVersion(version){
   }
 }
 
-function getPanelSlug(){
-  return getPanelSlugFromUrl();
-}
-
-function getPanelSlugFromUrl(){
-  slug = /\/panel\/([^\/|#|?]*)/g.exec(top.location.href)[1];
-  console.log(slug);
-  return slug;
-}
-
 function query(queryname, data, callback){
-  if(top.use_mock_api) return query_mock(queryname, data, callback);
-
   var delay = top.fake_network_delay?parseFloat(top.fake_network_delay):0;
   var packet = {};
   if( data == undefined ) data = {};
-  packet.panel = getPanelSlug();
   packet.query = queryname||"status";
   packet.data = angular.toJson(data);
   $.ajax({
@@ -217,107 +202,6 @@ function query(queryname, data, callback){
   });
 }
 
-function query_mock(queryname, data, callback){
-  var delay = top.fake_network_delay?parseFloat(top.fake_network_delay):0;
-  console.log("Using a mockup connection (delay "+(delay/1000)+"s)");
-  console.log("Query name:",queryname);
-  console.log("Data:", data);
-  var stubs = {
-
-
-    "load_vacancies": {"request_data": "*", "returned_data": {data:
-      {
-        dates: ['01/01/2016','02/01/2016',
-        '03/01/2016','04/01/2016',
-        '05/01/2016','06/01/2016',
-        '07/01/2016','08/01/2016',
-        '09/01/2016','10/01/2016'],
-        rooms: [
-          {
-            accommodation:  {id: "1", name:"Estudio", max:"3", adults:"2", children:"1"},
-            vacancy: {'01/01/2016': '3', '02/01/2016': '3', '03/01/2016': '3', '04/01/2016': '3', '05/01/2016': '3',
-                      '06/01/2016': '3', '07/01/2016': '3', '08/01/2016': '3', '09/01/2016': '3', '10/01/2016': '3'},
-          },
-          {
-            accommodation:  {id: "2", name:"Apartamento estándar", max:"4", adults:"2", children:"3"},
-            vacancy: {'01/01/2016': '3', '02/01/2016': '3', '03/01/2016': '3', '04/01/2016': '3', '05/01/2016': '3',
-                      '06/01/2016': '3', '07/01/2016': '3', '08/01/2016': '3', '09/01/2016': '3', '10/01/2016': '3'},
-          },
-          {
-            accommodation:  {id: "3", name:"Apartamento de lujo", max:"4", adults:"2", children:"3"},
-            vacancy: {'01/01/2016': '3', '02/01/2016': '3', '03/01/2016': '3', '04/01/2016': '3', '05/01/2016': '3',
-                      '06/01/2016': '3', '07/01/2016': '3', '08/01/2016': '3', '09/01/2016': '3', '10/01/2016': '3'},
-          },
-        ]
-      }}},
-
-  };
-
-  var returned_data = {};
-
-  // TODO: hacer que diferencie por request_data, no solo por queryname
-  if(stubs[queryname]) returned_data = stubs[queryname]["returned_data"]["data"];
-
-  console.log(returned_data);
-
-  var returned_package = {"data": returned_data, "code": 200, "status": "Ok", "message": "(Mock) Ok"}
-  if(callback) setTimeout(function(){callback(returned_data);}, delay);
-
-}
-
-// Alert replacement and notification functions
-
-var native_alert = window.alert;
-window.alert = function(title, msg) {
-  // Reemplaza el alert nativo por uno que hace aparecer una notificación no
-  // intrusiva al pie de la ventana.
-  // También devuelve una función que sirve para emitir un nuevo mensaje
-  // cerrando rápidamente este (cancelando el timeout)
-  if(title==undefined) title = "";
-  if(msg==undefined) msg = "";
-  //swal(title, msg);
-  var last_alert = alertify.log(title+(msg?"<br/>\n"+msg:''));
-  return { later: function(msg, wait) {
-    var wait = wait==undefined?0:parseFloat(wait);
-    return function() {
-      setTimeout(function(){
-        alertify.close(last_alert, 1);
-        console.log(msg);
-        if(msg) alertify.success(msg);
-      }, wait);
-    }
-  }
-  }
-}
-
-window.alertError = function(title, msg, cb) {
-  if(title==undefined) title = "ERROR";
-  if(msg==undefined) msg = "";
-  alertify.alert(title+(msg?"<br/>\n"+msg:''),cb);
-}
-
-function h4(msg) {
-  var msg = msg ? "<h4>"+msg+"</h4>" : "";
-  return msg;
-}
-
-function wait(msg) {
-  var msg = msg ? msg+' <span class="fa fa-spinner fa-spin"></span>' : "";
-  return msg;
-}
-
-function ok(msg) {
-  var msg = msg ? msg+'&nbsp;&nbsp;<span>\u2713</span>' : "";
-  return msg;
-}
-
-function sleep(miliseconds) {
-  var currentTime = new Date().getTime();
-
-  while (currentTime + miliseconds >= new Date().getTime()) {
-  }
-}
-
 function disable_section() {
   $('.ngview-contents').addClass('disabled');
 }
@@ -330,35 +214,31 @@ function ask_new_panel_version(cb) {
   if(!top.reloadasking){
     top.reloadasking = true;
     alertify.set({ labels: {
-      ok     : "Recargar ahora",
-      cancel : "Más tarde"
+      ok     : "Reload now",
+      cancel : "Reload later"
     } });
-    alertify.confirm("Nueva versión de la aplicación disponible.", cb);
+    alertify.confirm("A newer version of the application is available.", cb);
   }
 }
 
 function ask_save(cb) {
   alertify.set({ labels: {
-    ok     : "Guardar",
-    cancel : "Descartar"
+    ok     : "Save",
+    cancel : "Discard changes"
   } });
-  alertify.confirm("¿Guardar las modificaciones?", cb);
+  alertify.confirm("¿Save changes?", cb);
 }
 
 function confirm_save(msg, cb) {
   alertify.set({ labels: {
-    ok     : "Guardar",
-    cancel : "Cancelar"
+    ok     : "Save",
+    cancel : "Cancel"
   } });
   alertify.confirm(msg, cb);
 }
 
 function expired(cb) {
-  alertify.confirm("La sesión expiró.", cb);
-}
-
-function close_aside() {
-  $('.aside-toggled').removeClass('aside-toggled');
+  alertify.confirm("Session has expired.", cb);
 }
 
 function initialize_uploader(all_done_callback){
@@ -389,4 +269,3 @@ function initialize_uploader(all_done_callback){
   console.log("UPLOADER Initialized");
 
 }
-
