@@ -21,7 +21,7 @@ class PagesTest extends TestCase
     public function testHall()
     {
         $this->visit('/event/1')
-             ->see('Select your');
+             ->see('Select your desired location');
     }
 
     public function testPanelAuth()

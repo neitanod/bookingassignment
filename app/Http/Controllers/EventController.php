@@ -22,8 +22,8 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function event()
+    public function event($id)
     {
-        return view('event');
+        return view('event',['event_id'=>$id]);
     }
 }

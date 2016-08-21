@@ -14,6 +14,7 @@ class CreateStandsTable extends Migration
     {
         Schema::create('stands', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('id_internal');
             $table->integer('venue_map_id');
             $table->enum('status',['available', 'reserved']);
             $table->integer('company_id');

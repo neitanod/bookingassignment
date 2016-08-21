@@ -43,13 +43,5 @@
 @section('content-js')
 <script src="http://maps.google.com/maps/api/js?key=AIzaSyCk4hiZ8MGAsk1vGXtDZl1VpOPKm_oR8fs"></script>
 <script src="{{ asset('lib/ng-map-1.17.3/ng-map.min.js') }}"></script>
+<script src="{{ asset('lib/app/ngEvents.js') }}"></script>
 @endsection
-
-
-{{--
-Another example:
-
-                        <img src="{{ asset('pics/stand/full/800x600/stand1.jpg') }}" class="ev-logo col-sm-3"/>
-                        <img src="{{ asset('pics/stand/full/800x600/stand2.jpg') }}" class="ev-logo col-sm-3"/>
-                        <img src="{{ asset('pics/stand/full/800x600/stand3.jpg') }}" class="ev-logo col-sm-3"/>
---}}

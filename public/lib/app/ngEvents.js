@@ -31,8 +31,6 @@
       $('#event-details').fadeIn();
     };
 
-    top.scope = $scope; // for debugging purposes
-
     $scope.init = function() {
       $http({
         method: 'GET',
@@ -81,62 +79,8 @@
       return result;
 
     }
-  })
+  });
 
 ;
 
 })(window.angular);
-
-
-function query(queryname, data, callback){
-  var delay = top.fake_network_delay?parseFloat(top.fake_network_delay):0;
-  var packet = {};
-  if( data == undefined ) data = {};
-  packet.query = queryname||"status";
-  packet.data = angular.toJson(data);
-  $.ajax({
-    url: "/API/stands",   // Entry point de la API del Panel.
-    data: packet,
-    method: 'get',
-    context: document.body,
-    success: function(response, status, r){
-      if(typeof(response)=='string'){response = JSON.parse(response);}
-      // console.log(typeof(response));
-      returned_data = response["data"];
-      // console.log("> Success!  Status: "+status);
-      // console.log(r.responseText.substr(0,100)+"...");
-      // console.log("Packet:", packet);
-      // console.log("Response:", response);
-      // console.log("Request:", r);
-      // console.log("returned_data: ",response['data']);
-      if(response["code"]==401){
-        alertError("You must be logged in to access this feature.",undefined,function(){top.location.href="l?nocache";});
-      } else if(response["code"]!=200){
-        console.group("ERROR");
-        console.log("Response:");
-        console.log(response);
-        console.log("Error code:",response['code']);
-        console.groupEnd();
-        //alertError(h4(response["message"]));
-      } else {
-        console.group("OK");
-        console.log(returned_data);
-        console.groupEnd();
-        if(callback) setTimeout(function(){callback(returned_data);}, delay);
-      }
-    },
-    complete: function(r, status){
-      console.group("COMPLETED");
-      console.log("> with status: "+status+" "+r.status+" "+r.statusText);
-      console.log("Request:", r);
-      console.log("Response:", r.responseText.substr(0,100)+"...");
-      console.groupEnd();
-    },
-    error: function(r, status){
-      console.group("COMPLETED WITH ERROR");
-      console.log("> Error: "+status+" "+r.status+" "+r.statusText);
-      console.log("Request:", r);
-      console.log("Response:", r.responseText.substr(0,100)+"...");
-    }
-  });
-}

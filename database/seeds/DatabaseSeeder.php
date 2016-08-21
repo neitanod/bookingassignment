@@ -75,36 +75,54 @@ class DatabaseSeeder extends Seeder
 
       DB::table('stands')->delete();
       DB::table('stands')->insert([
-        'id' => '11',
+        'id' => '111',
+        'id_internal' => '1',
         'venue_map_id' => '1',
         'status' => 'available',
         'price' => 11000,
         'picture' => 'stand1.jpg'
       ]);
       DB::table('stands')->insert([
-        'id' => '12',
+        'id' => '112',
+        'id_internal' => '2',
         'venue_map_id' => '1',
         'status' => 'available',
         'price' => 21000,
         'picture' => 'stand2.jpg'
       ]);
       DB::table('stands')->insert([
-        'id' => '13',
+        'id' => '113',
+        'id_internal' => '3',
         'venue_map_id' => '1',
         'status' => 'reserved',
         'company_id' => 1,
         'price' => 14000,
         'picture' => 'stand3.jpg'
       ]);
+
+      // Bulk
+      for($i = 1; $i <47; $i++) {
+        DB::table('stands')->insert([
+          'id' => 113+$i,
+          'id_internal' => 3+$i,
+          'venue_map_id' => '1',
+          'status' => 'available',
+          'price' => rand(5,15)*1000,
+          'picture' => 'stand'.rand(1,3).'.jpg'
+        ]);
+      }
+
       DB::table('stands')->insert([
-        'id' => '21',
+        'id' => '221',
+        'id_internal' => '1',
         'venue_map_id' => '2',
         'status' => 'available',
         'price' => 51000,
         'picture' => 'stand1.jpg'
       ]);
       DB::table('stands')->insert([
-        'id' => '22',
+        'id' => '222',
+        'id_internal' => '2',
         'venue_map_id' => '2',
         'status' => 'reserved',
         'company_id' => 2,
@@ -112,12 +130,28 @@ class DatabaseSeeder extends Seeder
         'picture' => 'stand2.jpg'
       ]);
       DB::table('stands')->insert([
-        'id' => '23',
+        'id' => '223',
+        'id_internal' => '3',
         'venue_map_id' => '2',
         'status' => 'available',
         'price' => 20000,
         'picture' => 'stand3.jpg'
       ]);
+
+      // Bulk
+      for($i = 1; $i <47; $i++) {
+        DB::table('stands')->insert([
+          'id' => 223+$i,
+          'id_internal' => 3+$i,
+          'venue_map_id' => '2',
+          'status' => 'available',
+          'price' => rand(10,20)*1000,
+          'picture' => 'stand'.rand(1,3).'.jpg'
+        ]);
+      }
+
+
+
 
       DB::table('stand_visitors')->delete();
       DB::table('stand_visitors')->insert([

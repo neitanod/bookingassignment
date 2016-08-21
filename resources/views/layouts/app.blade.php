@@ -88,7 +88,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src="{{ asset('lib/angular-1.5.0/angular.min.js') }}"></script>
     <script src="{{ asset('lib/moment/min/moment-with-locales.min.js') }}"></script>
-    <script src="{{ asset('lib/app/app.js') }}"></script>
     @yield('content-js')
 </body>
 </html>

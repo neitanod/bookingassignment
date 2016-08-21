@@ -6,3 +6,24 @@ ng-map {
   width: 100%;
   height: 100%;
 }
+
+/* HALL MAPS */
+#stands polygon, #stands rect, #stands path {
+  fill: orange;
+  cursor: pointer;
+  stroke: grey;
+  stroke-width: 1;
+}
+#stands polygon.reserved, #stands rect.reserved, #stands path.reserved {
+  fill: mediumblue;
+  cursor: default;
+}
+#stands polygon.reserved:hover, #stands rect.reserved:hover, #stands path.reserved:hover {
+  fill: lightblue;
+}
+#stands polygon:hover, #stands rect:hover, #stands path:hover{
+  fill: yellow;
+}
+
+/* /HALL MAPS */
+
