@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDocumentsTable extends Migration
+class CreateStandsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,14 @@ class CreateDocumentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('documents', function (Blueprint $table) {
+        Schema::create('stands', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('venue_map_id');
+            $table->enum('status',['available', 'reserved']);
             $table->integer('company_id');
-            $table->string('file');
-            $table->string('title');
-            //$table->mediumText('summary');
-            //$table->timestamps();
+            $table->decimal('price',10,2);
+            $table->string('picture');
+            $table->timestamps();
         });
     }
 
@@ -29,6 +30,6 @@ class CreateDocumentsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('documents');
+        Schema::drop('stands');
     }
 }

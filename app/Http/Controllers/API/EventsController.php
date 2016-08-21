@@ -15,7 +15,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        echo '{"events": {
+        return response()->json(json_decode('{"events": {
                 "1": {
                   "id": "1",
                   "lat": "25.770914",
@@ -39,7 +39,7 @@ class EventsController extends Controller
                   "logo":  "mbcc.png"
                 }
               }
-            }'; die();
+            }'));
     }
 
     /**
@@ -49,7 +49,7 @@ class EventsController extends Controller
      */
     public function event()
     {
-        echo '{"event": {
+        return response()->json(json_decode('{"event": {
                 "1": {
                   "id": "1",
                   "lat": "25.770914",
@@ -62,6 +62,6 @@ class EventsController extends Controller
                   "logo":  "jlkc.jpg"
                 }
               }
-            }'; die();
+            }'));
     }
 }

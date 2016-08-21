@@ -112,6 +112,4 @@ a polygon, a {
 			<path fill="#fff" d="M539.536 276.791c-0.302 0-0.545 0.247-0.545 0.554v1.311c0 0.255 0.373 0.255 0.373 0v-1.199h0.089v3.282c0 0.341 0.496 0.331 0.496 0v-1.905h0.085v1.905c0 0.331 0.5 0.341 0.5 0v-3.282h0.085v1.199c0 0.257 0.372 0.257 0.371 0v-1.303c0-0.284-0.22-0.561-0.553-0.561L539.536 276.791z"></path>
 		</g>
 	</g>
-	<!-- Image fallback -->
-	<image xlink:href="images/mall/mall-ground.svg" src="images/mall/mall-ground.png"></image>
 </svg>
