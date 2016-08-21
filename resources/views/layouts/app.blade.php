@@ -13,13 +13,12 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('lib/app/app.css') }}" rel="stylesheet">
 
     <style>
         body {
             font-family: 'Lato';
         }
-
         .fa-btn {
             margin-right: 6px;
         }
@@ -46,9 +45,11 @@
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
+                {{--
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/') }}">Home</a></li>
                 </ul>
+                --}}
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
@@ -75,8 +76,19 @@
     @yield('content')
 
     <!-- JavaScripts -->
+    <script>
+      {{--
+      Here we define a JS variable in order to help static JS and HTML
+      files to know the root path of the app without having to be rendered
+      by Laravel
+      --}}
+      top.APP_PATH="{{ URL::to('/') }}";
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    <script src="{{ asset('lib/angular-1.5.0/angular.min.js') }}"></script>
+    <script src="{{ asset('lib/moment/min/moment-with-locales.min.js') }}"></script>
+    <script src="{{ asset('lib/app/app.js') }}"></script>
+    @yield('content-js')
 </body>
 </html>

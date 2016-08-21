@@ -61,6 +61,11 @@
     </div>
   </body>
   <script>
+    {{--
+    Here we define a JS variable in order to help static JS and HTML
+    files to know the root path of the app without having to be rendered
+    by Laravel
+    --}}
     top.APP_PATH="{{ URL::to('/') }}";
   </script>
   <script src="{{ asset('lib/rsvp-3.0.8/rsvp.min.js') }}"></script>

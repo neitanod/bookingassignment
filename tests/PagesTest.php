@@ -11,16 +11,25 @@ class PagesTest extends TestCase
      *
      * @return void
      */
-    public function testBasicExample()
+    public function testHome()
     {
         $this->visit('/')
-             ->see('Welcome');
+             ->see('Please select')
+             ->see('Book your place');
     }
+
+    public function testHall()
+    {
+        $this->visit('/hall/1')
+             ->see('Reserve');
+    }
+
     public function testPanelAuth()
     {
         $this->visit('/panel')
              ->see('<div class="panel-heading">Login</div>');
     }
+
     public function testPanelPreloader()
     {
         $user = \App\User::first();
