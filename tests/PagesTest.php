@@ -20,8 +20,8 @@ class PagesTest extends TestCase
 
     public function testHall()
     {
-        $this->visit('/hall/1')
-             ->see('Reserve');
+        $this->visit('/event/1')
+             ->see('Select your');
     }
 
     public function testPanelAuth()
