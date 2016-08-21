@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Please select the event of your interest:</div>
 
-                <div class="panel-body">
+                <div class="panel-body ng-cloak">
                     <div id="gmap" class="embed-responsive embed-responsive-16by9">
                       <ng-map zoom="12" center="[25.79, -80.18]" default-style="false">
                         <marker
