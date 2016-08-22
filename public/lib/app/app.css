@@ -23,16 +23,24 @@ ng-map {
   stroke: grey;
   stroke-width: 1;
 }
-#stands polygon.reserved, #stands rect.reserved, #stands path.reserved {
+#stands polygon.status-reserved, #stands rect.status-reserved, #stands path.status-reserved {
   fill: mediumblue;
   cursor: default;
-}
-#stands polygon.reserved:hover, #stands rect.reserved:hover, #stands path.reserved:hover {
-  fill: lightblue;
 }
 #stands polygon:hover, #stands rect:hover, #stands path:hover{
   fill: yellow;
 }
+#stands polygon.status-reserved:hover, #stands rect.status-reserved:hover, #stands path.status-reserved:hover {
+  fill: lightblue;
+}
 
 /* /HALL MAPS */
-
+.stand-company-logo
+{
+  max-height: 150px;
+  max-width: 150px;
+}
+.stand-picture
+{
+  max-height: 150px;
+}

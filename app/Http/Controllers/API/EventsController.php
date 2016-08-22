@@ -7,6 +7,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\EventRepository;
+use App\Repositories\StandRepository;
 
 class EventsController extends Controller
 {
@@ -29,6 +30,7 @@ class EventsController extends Controller
     public function event($id)
     {
       $event = EventRepository::eventDetails($id);
-      return response()->json(['event'=>$event]);
+      $stands = StandRepository::forEvent($id);
+        return response()->json(['event'=>$event,'stands'=>$stands]);
     }
 }

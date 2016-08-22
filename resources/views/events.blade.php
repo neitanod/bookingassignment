@@ -23,7 +23,7 @@
                             <a id="call-to-action" class="btn btn-danger btn-large btn-lg {| ev?'':'disabled' |}" ng-href="{{ URL::to('event') }}/{| ev.id |}">Book your place</a>
                         </div>
                     </div>
-                    <div id="event-details" class="row row-spacing ng-cloak" ng-if="ev">
+                    <div id="event-details" class="row row-spacing" ng-if="ev">
                         <img ng-src="{{ asset('pics/venue/full/200x200/') }}/{| ev.logo |}" class="ev-logo col col-md-3"/>
                         <div class="col col-md-9">
                             <h1><span class="ev-name">{| ev.name |}</span></h1>

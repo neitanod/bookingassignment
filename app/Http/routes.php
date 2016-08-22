@@ -23,7 +23,7 @@ Route::auth();
 Route::get('/',              'EventController@events');
 Route::get('/event/{id}',    'EventController@event');
 
-Route::get('API/events/list',    'API\EventsController@index');
-Route::get('API/event/{id}',     'API\EventsController@event');
+Route::get('API/events/list',       'API\EventsController@index');
+Route::get('API/event/{id}',        'API\EventsController@event');
 
 Route::get('/panel', 'ControlPanelController@index');

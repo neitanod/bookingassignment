@@ -24,15 +24,41 @@
              console.log('SUCCESS');
              console.log(response);
              $scope.event = response.data.event;
-             $('#svgdata').html(response.data.event.svgdata);
+             $scope.stands = response.data.stands;
              $scope.trusted.svgdata = $sce.trustAsHtml(response.data.event.svgdata);
-             jQuery('#svgdata').html($scope.trusted.svgdata.$$unwrapTrustedValue());
+             setTimeout(function(){$scope.showStands();});
          },
          function(response){
              console.log('ERROR');
              console.log(response);
          });
-    }
+    };
+
+    $scope.showStands = function() {
+      angular.forEach($scope.stands,function(stand, key){
+        $('#stands [data-id="'+stand.id_internal+'"]').addClass('status-'+stand.status);
+      });
+      $('#stands')
+          .on('mouseover', '.status-available',
+          function(){ console.log($(this).attr('data-id')); })
+          .on('mouseover', '.status-reserved',
+          function(){ console.log($(this).attr('data-id')); })
+          .on('click', '.status-available',
+          function(){
+            $scope.selected = $scope.stands[$(this).attr('data-id')];
+            $scope.$apply();
+            $('html, body').animate({
+                scrollTop: $("#call-to-action").offset().top
+            }, 1000);
+
+          })
+          .on('click', '.status-reserved',
+          function(){
+            $scope.selected = $scope.stands[$(this).attr('data-id')];
+            $scope.$apply();
+          })
+    };
+
     $scope.init();
   }])
 

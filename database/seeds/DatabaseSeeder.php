@@ -86,7 +86,8 @@ class DatabaseSeeder extends Seeder
         'id' => '112',
         'id_internal' => '2',
         'venue_map_id' => '1',
-        'status' => 'available',
+        'status' => 'reserved',
+        'company_id' => 4,
         'price' => 21000,
         'picture' => 'stand2.jpg'
       ]);
@@ -102,11 +103,14 @@ class DatabaseSeeder extends Seeder
 
       // Bulk
       for($i = 1; $i <47; $i++) {
+        $rand_status = (rand(0,1)>0?'available':'reserved');
+        $rand_company_id = ($rand_status == 'reserved'? rand(1,4): 0);
         DB::table('stands')->insert([
           'id' => 113+$i,
           'id_internal' => 3+$i,
           'venue_map_id' => '1',
-          'status' => 'available',
+          'status' => $rand_status,
+          'company_id' => $rand_company_id,
           'price' => rand(5,15)*1000,
           'picture' => 'stand'.rand(1,3).'.jpg'
         ]);
@@ -133,18 +137,22 @@ class DatabaseSeeder extends Seeder
         'id' => '223',
         'id_internal' => '3',
         'venue_map_id' => '2',
-        'status' => 'available',
+        'status' => 'reserved',
+        'company_id' => 3,
         'price' => 20000,
         'picture' => 'stand3.jpg'
       ]);
 
       // Bulk
       for($i = 1; $i <47; $i++) {
+        $rand_status = (rand(0,1)>0?'available':'reserved');
+        $rand_company_id = ($rand_status == 'reserved'? rand(1,4): 0);
         DB::table('stands')->insert([
           'id' => 223+$i,
           'id_internal' => 3+$i,
           'venue_map_id' => '2',
-          'status' => 'available',
+          'status' => $rand_status,
+          'company_id' => $rand_company_id,
           'price' => rand(10,20)*1000,
           'picture' => 'stand'.rand(1,3).'.jpg'
         ]);
@@ -188,6 +196,30 @@ class DatabaseSeeder extends Seeder
         'admin_email' => 'Firstbourne',
         'phone' => '55-555-0001',
         'email' => 'afirstbourne@notapple.com',
+        'website' => 'notapple.com',
+        'facebook' => 'notapple',
+        'twitter' => '@notapple'
+      ]);
+      DB::table('companies')->insert([
+        'id' => '3',
+        'name' => 'Samsung',
+        'logo' => 'samsung.jpg',
+        'admin_name' => 'Frank',
+        'admin_email' => 'Lee',
+        'phone' => '55-555-2055',
+        'email' => 'franklee@samsungx.com',
+        'website' => 'fakesamsung.com',
+        'facebook' => 'fakesamsung',
+        'twitter' => '@fakesamsung'
+      ]);
+      DB::table('companies')->insert([
+        'id' => '4',
+        'name' => 'Apple',
+        'logo' => 'apple.jpg',
+        'admin_name' => 'Luise Eve',
+        'admin_email' => 'Phante',
+        'phone' => '55-555-0001',
+        'email' => 'lephante@notapple.com',
         'website' => 'notapple.com',
         'facebook' => 'notapple',
         'twitter' => '@notapple'
