@@ -18,6 +18,10 @@
 		<path fill="#fff" d="M422.5 494l54-54h36l36 36h63l27-27v-63l-90-90c0 0 0-54 0-99s-36-72-72-72h-9l-54-54h-63l-36 36h-126V89h-117v180h117v-18h99l36 36v72l-63 63 72 72H422.5z"></path>
 	</g>
 
+  <rect x="528.636" y="359.772" fill="lightgrey" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -106.6994 487.4048)" width="12.728" height="25.456"></rect>
+  <rect x="542.136" y="379.636" fill="lightgrey" transform="matrix(0.7071 0.7071 -0.7071 0.7071 433.5952 -274.7913)" width="12.728" height="12.728"></rect>
+  <rect x="506.136" y="343.636" fill="lightgrey" transform="matrix(0.7071 0.7071 -0.7071 0.7071 397.5952 -259.8796)" width="12.728" height="12.728"></rect>
+  <rect x="515.136" y="352.636" fill="lightgrey" transform="matrix(0.7071 0.7071 -0.7071 0.7071 406.5952 -263.6075)" width="12.728" height="12.728"></rect>
 
 	<g id="stands">
 			<polygon data-id="1" points="242.5,188 215.5,188 197.5,206 197.5,251 242.5,251"></polygon>
@@ -26,9 +30,7 @@
 			<rect data-id="4" x="242.5" y="107" width="36" height="63"></rect>
 			<polygon data-id="4" points="350.5,422 305.5,377 323.5,359 413.5,359"></polygon>
 			<polygon data-id="5" points="476.5,440 494.5,422 458.5,386 485.501,359.002 539.5,413 512.5,440"></polygon>
-			<rect data-id="6" x="528.636" y="359.772" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -106.6994 487.4048)" width="12.728" height="25.456"></rect>
 			<polygon data-id="7" points="395.5,89 395.5,116 440.5,116 449.5,107 431.5,89"></polygon>
-			<rect data-id="8" x="542.136" y="379.636" transform="matrix(0.7071 0.7071 -0.7071 0.7071 433.5952 -274.7913)" width="12.728" height="12.728"></rect>
 			<rect data-id="9" x="531.272" y="299.408" transform="matrix(0.7071 0.7071 -0.7071 0.7071 384.5474 -291.3796)" width="25.456" height="38.184"></rect>
 			<rect data-id="10" x="549.272" y="317.408" transform="matrix(0.7071 0.7071 -0.7071 0.7071 402.5474 -298.8354)" width="25.456" height="38.184"></rect>
 			<rect data-id="11" x="260.5" y="188" width="27" height="36"></rect>
@@ -60,8 +62,6 @@
 			<polygon data-id="37" points="467.5,143 458.5,143 458.5,116 467.5,125"></polygon>
       <polygon data-id="38" points="458.5,143 440.5,143 440.5,116 449.5,107 458.5,116"></polygon>
       <polygon data-id="39" points="620.5,440 593.5,413 611.5,395 602.5,386 620.5,368 638.5,386 638.5,422"></polygon>
-			<rect data-id="40" x="506.136" y="343.636" transform="matrix(0.7071 0.7071 -0.7071 0.7071 397.5952 -259.8796)" width="12.728" height="12.728"></rect>
-			<rect data-id="41" x="515.136" y="352.636" transform="matrix(0.7071 0.7071 -0.7071 0.7071 406.5952 -263.6075)" width="12.728" height="12.728"></rect>
 			<polygon data-id="42" points="395.5,71 395.5,89 431.5,89 413.5,71"></polygon>
 			<polygon data-id="43" points="548.5,476 584.5,440 611.5,467 611.5,476"></polygon>
       <rect data-id="44" x="71.5" y="89" width="117" height="180"></rect>
